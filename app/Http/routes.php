@@ -34,4 +34,9 @@ Route::get('query3', 'StudentController@query3');
 Route::get('query4', 'StudentController@query4');
 Route::get('query5', 'StudentController@query5');
 Route::get('orm1', 'StudentController@orm1');
+Route::get('orm2', 'StudentController@orm2');
+Route::get('orm3', 'StudentController@orm3');
+Route::get('orm4', 'StudentController@orm4');
+Route::get('section1', 'StudentController@section1');
+Route::get('urlTest', ['as'=>'url', 'uses'=>'StudentController@urlTest']);
 

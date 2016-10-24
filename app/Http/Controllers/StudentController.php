@@ -77,7 +77,7 @@ class StudentController extends Controller
 //            ->where('id','>=', 1006)
 //            ->delete();
 //        var_dump($num);
-        DB::table('student')->truncate();
+//        DB::table('student')->truncate();
     }
 
     /**
@@ -150,6 +150,7 @@ class StudentController extends Controller
 //        $student = Student::findOrFail(1006);
 //        var_dump($student);
 
+        //get() where() find() orderBy() first() chunk()
 //        $students = Student::get();
 //        $student = Student::where('id', '>', 1001)
 //        ->orderBy('age', 'desc')
@@ -158,7 +159,94 @@ class StudentController extends Controller
 //        Student::chunk(2, function($sutdents){
 //            var_dump($sutdents);
 //        });
-        //
-
+        //聚合函数 count
+//        $num = Student::count();
+//        $num = Student::where('id', '>', 1000)->max('age');
+//        var_dump($num);
     }
+    /*
+     * 使用eloquent orm 中增加数据，自定义时间戳及批量赋值
+     */
+    public function orm2()
+    {
+//        $student = new Student();
+//        $student->name = 'haley1';
+//        $student->age = 19;
+//        $bool = $student->save();
+//        var_dump($bool);
+//        $student = Student::find(1008);
+//        echo $student->created_at;
+        //使用模型的 create 方法新增数据
+//        $student = Student::create(
+//            ['name'=>'haley3', 'age'=>23]
+//        );
+//        var_dump($student);
+        //firstOrCreate 根据属性查找 存在返回，不存在新增并返回
+//        $student = Student::firstOrCreate(
+//            ['name'=>'haley4']
+//        );
+//        var_dump($student);
+//        firstOrNew 根据属性查找 存在返回，不存在创建实例返回，并不保存，需要自己save()
+        $student = Student::firstOrNew(
+            ['name'=>'haley5']
+        );
+        $bool = $student->save();
+        var_dump($bool);
+//        var_dump($student);
+    }
+
+    /**
+     * 使用eloquent orm 修改数据
+     */
+    public function orm3()
+    {
+        //通过模型更新
+//        $student = Student::find(1012);
+//        $student->name = 'kitty';
+//        $bool = $student->save();
+//        var_dump($bool);
+        //结合查询语句 批量更新
+        $num = Student::where('id', '>', 1010)->update(
+            ['age'=>41]
+        );
+        var_dump($num);
+    }
+
+    /**
+     * 使用eloquent orm 删除数据
+     */
+    public function orm4()
+    {
+        //通过模型删除
+//        $student = Student::find(1005);
+//        $bool = $student->delete();
+//        var_dump($bool);
+        //通过主键删除 可以多条1010, 1009 或者 [1010, 1009]
+//        $num = Student::destroy(1010, 1009);
+//        $num = Student::destroy(1007, 1008);
+//        var_dump($num);
+        //根据指定条件删除
+//        $num = Student::where('id', '>',1005 )->delete();
+//        var_dump($num);
+    }
+
+    public function section1()
+    {
+        $name = 'haley';
+        $arr = ['haley', 'imooc'];
+        $students = Student::get();
+        $students = [];
+        return view('student/section1', [
+            'name'=>$name,
+            'arr'=>$arr,
+            'students'=>$students
+        ]);
+    }
+
+    public function urlTest()
+    {
+        return 'urlTest';
+    }
+
+
 }
