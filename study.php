@@ -75,3 +75,43 @@ action() 指定控制器及方法名生成
 <br>
 <a href="{{route('url')}}">route()</a>
 <br>
+
+controller
+1.request
+laravel请求中使用的是symfony/http-foundation组件
+请求中存放了 $_GET,$_POST,$_COOKIE,$_FILES,$_SERVER等数据
+获取请求的值
+获取请求类型
+session简介
+由于http协议是无状态的（stateless）的，所以session 提供了一种保存用户数据的方法
+laravel 支持了多种session 后端驱动，并提供清楚、统一的API。也内置支持如memcache、redistribute和数据库的后端驱动。默认使用file的session驱动
+session的配置文件配置在config/session.php中
+laravel 中使用session有三种方式
+http request类的session()方法
+session() 辅助函数
+session facade
+
+response
+相应的常见类型
+字符串
+视图
+json
+重定向
+
+middleware
+laravel中间件提供了一个方便的机制来过滤进入应用程序的http请求
+新建中间件
+注册中间件
+使用中间件
+中间件的前置和后置操作
+
+玩转laravel表单
+1，案例演示
+2，静态资源管理及模板布局
+3，表单列表及分页实现
+4，通过表单实现新增及操作状态提示功能
+5，表单验证及数据保持详解
+6，通过模型处理性别
+7，通过表单实现修改
+8，表单中查看详情及删除
+

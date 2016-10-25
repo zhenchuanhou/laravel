@@ -26,17 +26,37 @@ Route::get('/', function () {
 Route::any('member/{id}', ['uses' => 'MemberController@info'])
     ->where('id', '[0-9]+');
 
-Route::get('test1', 'StudentController@test1');
+Route::get('test1', 'TestController@test1');
 
-Route::get('query1', 'StudentController@query1');
-Route::get('query2', 'StudentController@query2');
-Route::get('query3', 'StudentController@query3');
-Route::get('query4', 'StudentController@query4');
-Route::get('query5', 'StudentController@query5');
-Route::get('orm1', 'StudentController@orm1');
-Route::get('orm2', 'StudentController@orm2');
-Route::get('orm3', 'StudentController@orm3');
-Route::get('orm4', 'StudentController@orm4');
-Route::get('section1', 'StudentController@section1');
-Route::get('urlTest', ['as'=>'url', 'uses'=>'StudentController@urlTest']);
+Route::get('query1', 'TestController@query1');
+Route::get('query2', 'TestController@query2');
+Route::get('query3', 'TestController@query3');
+Route::get('query4', 'TestController@query4');
+Route::get('query5', 'TestController@query5');
+Route::get('orm1', 'TestController@orm1');
+Route::get('orm2', 'TestController@orm2');
+Route::get('orm3', 'TestController@orm3');
+Route::get('orm4', 'TestController@orm4');
+Route::get('section1', 'TestController@section1');
+Route::get('urlTest', ['as'=>'url', 'uses'=>'TestController@urlTest']);
+Route::get('test/request1', ['uses'=>'TestController@request1']);
+Route::get('test/request1', ['uses'=>'TestController@request1']);
+Route::get('test/request1', ['uses'=>'TestController@request1']);
+
+Route::get('session1', ['uses'=>'TestController@session1']);
+Route::get('session2', [
+    'as'=>'session2',
+    'uses'=>'TestController@session2'
+]);
+
+Route::get('response', ['uses'=>'TestController@response']);
+
+Route::get('activity0', ['uses'=>'TestController@activity0']);
+
+Route::group(['middleware'=>['activity']], function(){
+    Route::get('activity1', ['uses'=>'TestController@activity1']);
+    Route::get('activity2', ['uses'=>'TestController@activity2']);
+});
+
+
 
