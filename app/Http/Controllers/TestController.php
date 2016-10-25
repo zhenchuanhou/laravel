@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Session;
 
 class TestController extends Controller
 {
+
     public function test1()
     {
 //        $student = DB::select('select * from student');
